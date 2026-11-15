@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #090914;
+  color: #eaf5ff;
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(17, 24, 49, 0.45), transparent 62%),
+    #090914;
+}
+
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 100vh;
+  padding: 42px 18px 24px;
+}
+
+h1 {
+  margin: 0;
+  color: #8cbcff;
+  font-size: clamp(17px, 3.4vw, 24px);
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(39, 111, 255, 0.65);
+}
+
+.demo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: -12px;
+}
+
+.perspective-container {
+  display: grid;
+  place-items: center;
+  perspective: 1000px;
+}
+
+.liquid-text {
+  display: inline-block;
+  padding: 12px 4px;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  background-image:
+    linear-gradient(0deg, #00d9ff 0%, #00d9ff 48%, transparent 49%),
+    linear-gradient(0deg, #00d9ff 0%, #00d9ff 48%, transparent 49%);
+  background-repeat: no-repeat;
+  background-size: 400px 400px, 400px 400px;
+  background-position: 0 400px, 0 -400px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px rgba(0, 217, 255, 0.8);
+  color: transparent;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(54px, 13vw, 92px);
+  font-weight: 900;
+  letter-spacing: 0.055em;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-position 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.5s ease,
+              transform 0.5s ease;
+}
+
+.perspective-container:hover .liquid-text,
+.perspective-container:focus-within .liquid-text,
+.liquid-text.is-filled {
+  background-position: 0 0, 0 0;
+  -webkit-text-stroke: 2px rgba(0, 217, 255, 0.8);
+  text-shadow:
+    0 0 15px rgba(0, 217, 255, 0.3),
+    0 0 35px rgba(0, 217, 255, 0.2);
+  filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.22));
+}
+
+.liquid-text:focus-visible {
+  outline: 1px dashed rgba(0, 217, 255, 0.7);
+  outline-offset: 12px;
+}
+
+@keyframes wave-flow {
+  0% {
+    background-position-x: 0px, 0px;
+  }
+  100% {
+    background-position-x: 400px, -400px;
+  }
+}
+
+.hint {
+  margin: 54px 0 0;
+  padding: 5px 9px;
+  border-radius: 2px;
+  background: #f7f7f7;
+  color: #171717;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+footer {
+  color: rgba(119, 137, 171, 0.55);
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding-top: 34px;
+    padding-bottom: 20px;
+  }
+  .hint {
+    margin-top: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-text {
+    transition: none;
+  }
+}
